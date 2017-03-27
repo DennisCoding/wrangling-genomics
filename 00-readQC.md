@@ -331,12 +331,12 @@ We already know how to use a for loop to deal with this situation.
 ```bash
     $ for infile in *.fastq
     >do
-    >outfile=$infile\_trim.fastq
+    >outfile=${infile}_trim.fastq
     >java -jar ~/Trimmomatic-0.32/trimmomatic-0.32.jar SE $infile $outfile SLIDINGWINDOW:4:20 MINLEN:20
     >done
 ```
 
-Do you remember how the first specifies a variable that is assigned the value of each item in the list in turn?  We can call it whatever we like.  This time it is called infile.  Note that the third line of this for loop is creating a second variable called outfile.  We assign it the value of $infile with '_trim.fastq' appended to it.  The '\' escape character is used so the shell knows that whatever follows \ is not part of the variable name $infile.  There are no spaces before or after the '='.
+Do you remember how the first specifies a variable that is assigned the value of each item in the list in turn?  We can call it whatever we like.  This time it is called infile.  Note that the third line of this for loop is creating a second variable called outfile.  We assign it the value of $infile with 'trim.fastq' appended to it.  The curly braces (*"{" "}"*) are used so the shell knows that whatever follows *"}"* is not part of the variable name $infile.  There are no spaces before or after the '='.
 
 
 
