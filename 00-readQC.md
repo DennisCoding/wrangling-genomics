@@ -170,7 +170,7 @@ The *FASTQC* tool produces several other diagnostic plots to assess sample quali
     mkdir dc_workshop/docs
     mkdir dc_workshop/results
     ``` 
-> The sample data we will be working with is in a hidden directory (placing a '.' in front of a directory name hides the directory. In the next step we will move some of those hidden files into our new dirctories to start our project.
+> The sample data we will be working with is in a hidden directory (placing a '.' in front of a directory name hides the directory. In the next step we will move some of those hidden files into our new directories to start our project.
 3. Move our sample data to our working (home) directory
    
     ```bash
@@ -262,7 +262,7 @@ Because *Trimmomatic* is java based, it is run using the command:
 
 What follows this are the specific commands that tells the program exactly how you want it to operate. *Trimmomatic* has a variety of options and parameters:
 
-* **_-threds_** How many processors do you want *Trimmomatic* to run with?
+* **_-threads_** How many processors do you want *Trimmomatic* to run with?
 * **_SE_** or **_PE_** Single End or Paired End reads?
 * **_-phred33_** or **_-phred64_** Which quality score do your reads have?
 * **_SLIDINGWINDOW_** Perform sliding window trimming, cutting once the average quality within the window falls below a threshold.
@@ -276,11 +276,11 @@ What follows this are the specific commands that tells the program exactly how y
 
 A generic command for *Trimmomatic* looks like this:
 
-**java jar trimmomatic-0.32.jar SE -thr**
+**java -jar trimmomatic-0.32.jar SE -threads 4 \<inputFile\> \<outputFile\> \<trimmomaticOption\>:\<trimmomaticOptionValues\>**
 
 A complete command for *Trimmomatic* will look something like this:
 
-**java jar trimmomatic-0.32.jar SE -threads 4 -phred64 SRR_1056.fastq SRR_1056_trimmed.fastq ILLUMINACLIP:SRR_adapters.fa SLIDINGWINDOW:4:20**
+**java -jar trimmomatic-0.32.jar SE -threads 4 -phred64 SRR_1056.fastq SRR_1056_trimmed.fastq ILLUMINACLIP:SRR_adapters.fa SLIDINGWINDOW:4:20**
 
 This command tells *Trimmomatic* to run on a Single End file (``SRR_0156.fastq``, in this case), the output file will be called ``SRR_0156_trimmed.fastq``,  there is a file with Illumina adapters called ``SRR_adapters.fa``, and we are using a sliding window of size 4 that will remove those bases if their phred score is below 20.
 
@@ -300,7 +300,7 @@ The general form of the command is:
    ```bash
 java -jar ~/Trimmomatic-0.32/trimmomatic-0.32.jar inputfile outputfile OPTION:VALUE...
 ```    
-'java -jar' calls the Java program, which is needed to run trimmomargumentstic, which lived in a 'jar' file (trimmomatic-0.32.jar), a special kind of java archive that is often used for programs written in the Java programing language.  If you see a new program that ends in '.jar', you will know it is a java program that is executed 'java -jar program name'.  The 'SE' argument is a keyword that specifies we are working with single-end reads.
+'java -jar' calls the Java program, which is needed to run trimmomatic, which is located in a 'jar' file (trimmomatic-0.32.jar), a special kind of java archive that is often used for programs written in the Java programing language.  If you see a new program that ends in '.jar', you will now know it is a java program that is executed via the command: 'java -jar program name'.  The 'SE' argument is a *Trimmomatic* specific keyword that specifies we are working with single-end reads.
 
 The next two arguments are input file and output file names.  These are then followed by a series of options. The specifics of how options are passed to a program are different depending on the program. You will always have to read the manual of a new program to learn which way it expects its command-line arguments to be composed.
 
